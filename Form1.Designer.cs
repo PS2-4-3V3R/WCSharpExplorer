@@ -34,9 +34,11 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.devToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consolaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.BTN_GotoPath = new System.Windows.Forms.Button();
+            this.TXTB_Path = new System.Windows.Forms.TextBox();
+            this.BTN_Back = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,25 +74,15 @@
             this.consolaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.consolaToolStripMenuItem.Text = "Console";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // listView1
             // 
             this.listView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.listView1.HideSelection = false;
             this.listView1.LabelEdit = true;
             this.listView1.LargeImageList = this.imageList1;
-            this.listView1.Location = new System.Drawing.Point(107, 27);
+            this.listView1.Location = new System.Drawing.Point(12, 56);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(982, 535);
+            this.listView1.Size = new System.Drawing.Size(1077, 506);
             this.listView1.StateImageList = this.imageList1;
             this.listView1.TabIndex = 4;
             this.listView1.TileSize = new System.Drawing.Size(64, 64);
@@ -104,17 +96,47 @@
             this.imageList1.Images.SetKeyName(0, "imageres_162.ico");
             this.imageList1.Images.SetKeyName(1, "imageres_19.ico");
             // 
+            // BTN_GotoPath
+            // 
+            this.BTN_GotoPath.Location = new System.Drawing.Point(1014, 27);
+            this.BTN_GotoPath.Name = "BTN_GotoPath";
+            this.BTN_GotoPath.Size = new System.Drawing.Size(75, 23);
+            this.BTN_GotoPath.TabIndex = 1;
+            this.BTN_GotoPath.Text = "Ir a la ruta";
+            this.BTN_GotoPath.UseVisualStyleBackColor = true;
+            this.BTN_GotoPath.Click += new System.EventHandler(this.BTN_GotoPath_Click);
+            // 
+            // TXTB_Path
+            // 
+            this.TXTB_Path.Location = new System.Drawing.Point(68, 28);
+            this.TXTB_Path.Name = "TXTB_Path";
+            this.TXTB_Path.Size = new System.Drawing.Size(940, 20);
+            this.TXTB_Path.TabIndex = 5;
+            // 
+            // BTN_Back
+            // 
+            this.BTN_Back.Location = new System.Drawing.Point(12, 27);
+            this.BTN_Back.Name = "BTN_Back";
+            this.BTN_Back.Size = new System.Drawing.Size(50, 23);
+            this.BTN_Back.TabIndex = 6;
+            this.BTN_Back.Text = "Atrás";
+            this.BTN_Back.UseVisualStyleBackColor = true;
+            this.BTN_Back.Click += new System.EventHandler(this.BTN_Back_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1101, 574);
+            this.Controls.Add(this.BTN_Back);
+            this.Controls.Add(this.TXTB_Path);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BTN_GotoPath);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "WCSharpExplorer";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -128,9 +150,11 @@
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem devToolsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consolaToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Button BTN_GotoPath;
+        private System.Windows.Forms.TextBox TXTB_Path;
+        private System.Windows.Forms.Button BTN_Back;
     }
 }
 
