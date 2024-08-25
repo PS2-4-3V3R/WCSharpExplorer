@@ -65,14 +65,15 @@
             this.devToolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consolaToolStripMenuItem});
             this.devToolsToolStripMenuItem.Name = "devToolsToolStripMenuItem";
-            this.devToolsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.devToolsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.devToolsToolStripMenuItem.Text = "Dev Tools";
             // 
             // consolaToolStripMenuItem
             // 
             this.consolaToolStripMenuItem.Name = "consolaToolStripMenuItem";
-            this.consolaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.consolaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.consolaToolStripMenuItem.Text = "Console";
+            this.consolaToolStripMenuItem.Click += new System.EventHandler(this.consolaToolStripMenuItem_Click);
             // 
             // listView1
             // 
@@ -137,6 +138,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "WCSharpExplorer";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

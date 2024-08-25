@@ -22,6 +22,8 @@ namespace WCSharpExplorer
         [DllImport("msvcrt.dll")]
         public static extern int system(string format);
         //#######################################################
+        public static bool console;
+        public static string regionColor = "\u001b[48;2;0;128;128m";
         struct FileFolder
         {
             public string entries;
@@ -30,8 +32,8 @@ namespace WCSharpExplorer
         public Form1()
         {
             InitializeComponent();
-            AllocConsole();
-            system("");
+            //AllocConsole();
+            //system("");
 
             ShowDir(GetDirs(Directory.GetCurrentDirectory()), Directory.GetCurrentDirectory());
         }
@@ -62,7 +64,7 @@ namespace WCSharpExplorer
             //FUNCTION
             string[] GetDirsOnly(string arg)
             {
-                //Console.WriteLine("====== getFileNames =======");
+                if (console) Console.WriteLine(regionColor+"\u001b[2K====== GetDirsOnly " + arg+ " ======\u001b[0m");
                 List<string> file_PnE;
                 switch (arg)
                 {
@@ -73,8 +75,7 @@ namespace WCSharpExplorer
                         file_PnE = Directory.GetDirectories(path_folder).ToList(); //file_PnE = file path and extension
                         break;
                     default:
-
-                        Console.WriteLine("[ERROR]: in dir function");
+                        if (console) Console.WriteLine("[ERROR]: in dir function");
                         string[] err = { "ERROR" };
                         return err;
                 }
@@ -92,10 +93,10 @@ namespace WCSharpExplorer
         void ShowDir(List<FileFolder> FF, string path_current)
         {
             TXTB_Path.Text = path_current;
-            Console.WriteLine("====== OUTPUT =======");
+            if (console) Console.WriteLine(regionColor+"\u001b[2K====== OUTPUT =======\u001b[0m");
             for (int i = 0; i < FF.Count(); i++)
             {
-                Console.WriteLine(FF[i].entries);
+                if (console) Console.WriteLine(FF[i].entries);
                 listView1.Items.Add(FF[i].entries, FF[i].type);
                 listView1.LargeImageList = listView1.LargeImageList;
             }
@@ -109,17 +110,31 @@ namespace WCSharpExplorer
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             string FFS = listView1.SelectedItems[0].Text.ToString(); //File Folder Selected
-            Console.WriteLine(FFS);
+            if (console) Console.WriteLine(FFS);
             ChangeDirectory(FFS);
         }
 
         private void BTN_Back_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("====== BACK =======");
+            if (console) Console.WriteLine(regionColor+"\x1b[2K====== BACK =======\x1b[0m");
             string path_back = Directory.GetCurrentDirectory().Remove(Directory.GetCurrentDirectory().Length - Directory.GetCurrentDirectory().Split('\\').Last().Length, Directory.GetCurrentDirectory().Split('\\').Last().Length);
-            Console.WriteLine("path_back"+path_back);
+            if (console) Console.WriteLine("path_back = "+path_back);
             ChangeDirectory(path_back);
-            Console.WriteLine("Currentdirectory"+Directory.GetCurrentDirectory());
+            if (console) Console.WriteLine("Currentdirectory = "+Directory.GetCurrentDirectory());
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            listView1.Size = this.Size - new Size(40,107);
+            BTN_GotoPath.Location = ((Point)this.Size) - new Size(103,this.Size.Height-27);
+            TXTB_Path.Size = this.Size - new Size(177,this.Size.Height);
+        }
+
+        private void consolaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AllocConsole();
+            system("");
+            console = true;
         }
     }
 }
